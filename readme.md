@@ -37,4 +37,3 @@ controllers
 - API Documentation
 - Delete and update photo
 - Change password
-
