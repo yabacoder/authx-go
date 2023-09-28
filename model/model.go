@@ -32,7 +32,7 @@ type Search struct {
 	// UserId			uint64			`json:"user_id"`
 	User			User			`gorm:"foreignKey:UserRefer"`
 	CreatedAt		time.Time
-	DeletedAt		time.Time
+	
 }
 
 type SearchResponse struct {

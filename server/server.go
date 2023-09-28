@@ -20,7 +20,11 @@ func SetupAndListen() {
 
 	router.Post("/api/register", controllers.Register)
 	router.Post("/api/login", controllers.Login)
-	router.Get("/api/search", middleware.VerifyToken, controllers.Search)
+	router.Post("/api/logout", controllers.Logout)
+	router.Get("/api/users", middleware.VerifyToken, controllers.FetchAllUsers)
+	router.Get("/api/search/:term", middleware.VerifyToken, controllers.Search)
+	router.Post("/api/photo", middleware.VerifyToken, controllers.UploadPhoto)
+	router.Patch("/api/update", middleware.VerifyToken, controllers.UpdateUser)
 
 	router.Listen(":3000")
 

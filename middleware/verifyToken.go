@@ -55,7 +55,18 @@ func VerifyToken(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusForbidden).JSON(fiber.Map{"status": "fail", "message": "the user belonging to this token no logger exists"})
 	}
 
-	c.Locals("user", model.FilterUserRecord(&user))
+	// c.Locals("user", model.FilterUserRecord(&user))
+	c.Locals("user", user)
 
 	return c.Next()
+}
+
+func GetLoggedInUser (c *fiber.Ctx) model.User {
+	// var user {}
+	user := c.Locals("user").(model.User)
+	// fmt.Println(user)
+	// details, _ := user.(model.User)
+	// fmt.Println(details)
+
+	return user
 }
