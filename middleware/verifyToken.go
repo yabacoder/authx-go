@@ -33,7 +33,7 @@ func VerifyToken(c *fiber.Ctx) error {
 			return nil, fmt.Errorf("unexpected signing method: %s", jwtToken.Header["alg"])
 		}
 
-		return []byte(config.JwtSecret), nil 
+		return []byte(config.JwtSecret), nil
 	})
 	if err != nil {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{"status": "fail", "message": fmt.Sprintf("invalidate token: %v", err)})
@@ -61,7 +61,7 @@ func VerifyToken(c *fiber.Ctx) error {
 	return c.Next()
 }
 
-func GetLoggedInUser (c *fiber.Ctx) model.User {
+func GetLoggedInUser(c *fiber.Ctx) model.User {
 	// var user {}
 	user := c.Locals("user").(model.User)
 	// fmt.Println(user)
